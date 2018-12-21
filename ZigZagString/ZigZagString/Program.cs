@@ -7,6 +7,7 @@ namespace ZigZagString
         static void Main(string[] args)
         {
             Console.WriteLine(ZigZag("PAYPALISHIRING", 3));
+            Console.WriteLine("PAHNAPLSIIGYIR");
             Console.ReadLine();
         }
 
@@ -18,10 +19,14 @@ namespace ZigZagString
 
             for (int rowIndex = 0; rowIndex < numRows; rowIndex++)
             {
-                for (int stringIndex = 0; stringIndex < s.Length; stringIndex++)
+                for (int stringIndex = rowIndex; stringIndex < s.Length; stringIndex += 2*(numRows -1))
                 {
                     results += s[stringIndex];
 
+                    if (rowIndex > 0 && rowIndex < (numRows -1) && stringIndex + 2 *(numRows - 1 - rowIndex) < s.Length)
+                    {
+                        results += s[stringIndex + 2 * (numRows - 1 - rowIndex)];
+                    }
                 }
             }
 
